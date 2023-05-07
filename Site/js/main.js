@@ -2,7 +2,7 @@ const offset = 0
 const limit = 10
 const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
-/* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "Li" da lista. */
+/* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista. */
 function convertPokemonToHtmlLi(pokemon) {
     /* O RETURN faz o retorno do código HTML que vai ser adicionado ao INDEX da pagina principal. */
     return `
@@ -23,15 +23,12 @@ function convertPokemonToHtmlLi(pokemon) {
             `
 }
 
-/* Essa variável pega o conteúdo do meu Index e guarda para alterações. */
+/* Essa variável pega o conteúdo do meu Index com a ID="pokemonsOlList" e guarda para alterações. */
 const pokemonsListHtml = document.getElementById('pokemonsOlList')
 
-/* O Fetch é usado para realizar a manipulação lógica do JSON que é retornado bruto e os THENs vão delimitando o que vou usar.  */
-fetch(url) /* O Fetch é usado para chamar os comandos GET, PUT, etc. do Browser, apartir da URL na variável. */
-    /* O Then serve como o Try, Catch, Finally */
-    .then((response) => response.json()) /* O primeiro Then, chama uma função que recebe a resposta da URL e converte em JSON */
-    .then((jsonBody) => jsonBody.results) /* O segundo Then, chama outra função que recebe o JSON criado e filtra o RESULTS desse JSON. */
-    /* O último Then, chama outra função que exibe o JSON já filtrado. */
+/* Está função chama o arquivo poke-api.js e usa as funções de lá. */
+pokeApi.getPokemons() /* Esse é um dos métodos do arquivo poke-api.js */
+    /* O ".then" segue na mesma linha ou não, foi delocado para abaixo para ficar mais legível. */
     .then((pokemonsList) => {
         /* O For faz a seleção um por um dos pokemons. */
         for (let i = 0; i < pokemonsList.length; i++) {
@@ -40,7 +37,3 @@ fetch(url) /* O Fetch é usado para chamar os comandos GET, PUT, etc. do Browser
             pokemonsListHtml.innerHTML += convertPokemonToHtmlLi(pokemon);
         }
     })
-    .catch((error) => console.error(error)) /* O Catch, chama um função que recebe o ERRO e mostra esse erro. */
-
-/*const x = 10 + 10
-console.log(x)*/
