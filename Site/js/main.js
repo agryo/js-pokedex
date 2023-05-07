@@ -1,22 +1,22 @@
-const offset = 0
-const limit = 10
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+/* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista de tipos. */
+function convertPokemonTypesToHtmlLi(pokemonTypes) {
+    return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
+}
 
 /* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista. */
 function convertPokemonToHtmlLi(pokemon) {
     /* O RETURN faz o retorno do código HTML que vai ser adicionado ao INDEX da pagina principal. */
     return `
             <li class="pokemon">
-                <span class="number">#001</span>
+                <span class="number">#${pokemon.order}</span>
                 <span class="name">${pokemon.name}</span>
 
                 <div class="detail">
                     <ol class="types">
-                        <li class="type">grass</li>
-                        <li class="type">poison</li>
+                        ${convertPokemonTypesToHtmlLi(pokemon.types).join('')}
                     </ol>
 
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" 
+                    <img src="${pokemon.sprites.other.dream_world.front_default}" 
                          alt="${pokemon.name}">
                 </div>
             </li>
@@ -27,13 +27,12 @@ function convertPokemonToHtmlLi(pokemon) {
 const pokemonsListHtml = document.getElementById('pokemonsOlList')
 
 /* Está função chama o arquivo poke-api.js e usa as funções de lá. */
-pokeApi.getPokemons() /* Esse é um dos métodos do arquivo poke-api.js */
-    /* O ".then" segue na mesma linha ou não, foi delocado para abaixo para ficar mais legível. */
-    .then((pokemonsList) => {
-        /* O For faz a seleção um por um dos pokemons. */
-        for (let i = 0; i < pokemonsList.length; i++) {
-            const pokemon = pokemonsList[i];
-            /* Aqui ele está concatenando (adicionando) mais conteúdo ao HTML já existente. Nesse caso, a lista de Pokemons. */
-            pokemonsListHtml.innerHTML += convertPokemonToHtmlLi(pokemon);
-        }
-    })
+/* Esse método getPokemons() é um dos métodos do arquivo poke-api.js */
+/* O ".then" segue na mesma linha ou não, pode ser delocado para abaixo para ficar mais legível. */
+pokeApi.getPokemons().then((pokemonsList = []) => {
+    /* Aqui ele faz a inclusão de toda a lista já convertida para o HTML do Index da página.
+       A variável pokemonsListHtml recebe a inclusão de toda a lista através do .map() que
+       serve como um For, só que chama o método que já transforma em HTML e junta com o Join('')
+     */
+    pokemonsListHtml.innerHTML += pokemonsList.map(convertPokemonToHtmlLi).join('')
+})
