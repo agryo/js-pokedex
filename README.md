@@ -1,5 +1,8 @@
 # Projeto js-pokedex
 
+## Base de dados dos Pokemons
+### https://pokeapi.co/
+
 ## O Normalize CSS serve para padronizar todos o estilo em todos os browsers.
 ### https://cdnjs.com/libraries/normalize
 
