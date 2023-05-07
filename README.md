@@ -1,4 +1,4 @@
-# Projeto de JavaScript - js-pokedex
+# Projeto de JavaScript, HTTP, CSS - js-pokedex
 
 ### Base de dados dos Pokemons
 [PokeAPI](https://pokeapi.co/)
