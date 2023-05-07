@@ -23,22 +23,24 @@ function convertPokemonToHtmlLi(pokemon) {
             `
 }
 
-console.log(document.getElementById('pokemonsList'))
+/* Essa variável pega o conteúdo do meu Index e guarda para alterações. */
+const pokemonsListHtml = document.getElementById('pokemonsOlList')
 
 /* O Fetch é usado para realizar a manipulação lógica do JSON que é retornado bruto e os THENs vão delimitando o que vou usar.  */
-//fetch(url) /* O Fetch é usado para chamar os comandos GET, PUT, etc. do Browser, apartir da URL na variável. */
+fetch(url) /* O Fetch é usado para chamar os comandos GET, PUT, etc. do Browser, apartir da URL na variável. */
     /* O Then serve como o Try, Catch, Finally */
-//    .then((response) => response.json()) /* O primeiro Then, chama uma função que recebe a resposta da URL e converte em JSON */
-//    .then((jsonBody) => jsonBody.results) /* O segundo Then, chama outra função que recebe o JSON criado e filtra o RESULTS desse JSON. */
+    .then((response) => response.json()) /* O primeiro Then, chama uma função que recebe a resposta da URL e converte em JSON */
+    .then((jsonBody) => jsonBody.results) /* O segundo Then, chama outra função que recebe o JSON criado e filtra o RESULTS desse JSON. */
     /* O último Then, chama outra função que exibe o JSON já filtrado. */
-//    .then((pokemonsList) => {
+    .then((pokemonsList) => {
         /* O For faz a seleção um por um dos pokemons. */
-//        for (let i = 0; i < pokemonsList.length; i++) {
-//            const pokemon = pokemonsList[i];
-//            console.log(convertPokemonToHtmlLi(pokemon));
-//        }
-//    })
-//    .catch((error) => console.error(error)) /* O Catch, chama um função que recebe o ERRO e mostra esse erro. */
+        for (let i = 0; i < pokemonsList.length; i++) {
+            const pokemon = pokemonsList[i];
+            /* Aqui ele está concatenando (adicionando) mais conteúdo ao HTML já existente. Nesse caso, a lista de Pokemons. */
+            pokemonsListHtml.innerHTML += convertPokemonToHtmlLi(pokemon);
+        }
+    })
+    .catch((error) => console.error(error)) /* O Catch, chama um função que recebe o ERRO e mostra esse erro. */
 
 /*const x = 10 + 10
 console.log(x)*/
