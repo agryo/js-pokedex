@@ -1,23 +1,18 @@
-/* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista de tipos. */
-function convertPokemonTypesToHtmlLi(pokemonTypes) {
-    return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
-}
-
 /* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista. */
 function convertPokemonToHtmlLi(pokemon) {
     /* O RETURN faz o retorno do código HTML que vai ser adicionado ao INDEX da pagina principal. */
     return `
-            <li class="pokemon">
-                <span class="number">#${pokemon.order}</span>
-                <span class="name">${pokemon.name}</span>
+            <li class="pokemon ${pokemon.tipo}">
+                <span class="number">#${pokemon.numero}</span>
+                <span class="name">${pokemon.nome}</span>
 
                 <div class="detail">
                     <ol class="types">
-                        ${convertPokemonTypesToHtmlLi(pokemon.types).join('')}
+                        ${pokemon.tipos.map((tipo) => `<li class="type">${tipo}</li>`).join('')}
                     </ol>
 
-                    <img src="${pokemon.sprites.other.dream_world.front_default}" 
-                         alt="${pokemon.name}">
+                    <img src="${pokemon.foto}" 
+                         alt="${pokemon.nome}">
                 </div>
             </li>
             `
