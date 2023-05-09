@@ -8,7 +8,7 @@ function convertPokemonToHtmlLi(pokemon) {
 
                 <div class="detail">
                     <ol class="types">
-                        ${pokemon.tipos.map((tipo) => `<li class="type">${tipo}</li>`).join('')}
+                        ${pokemon.tipos.map((tipo) => `<li class="type ${tipo}">${tipo}</li>`).join('')}
                     </ol>
 
                     <img src="${pokemon.foto}" 
