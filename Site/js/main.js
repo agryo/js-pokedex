@@ -6,7 +6,7 @@ const carregarMaisButton = document.getElementById('carregarMaisButton')
 
 /* Aqui são os parametros usados na PokeAPI e o limite que eu quero. */
 const limiteTotal = 151
-const limit = 10
+const limit = 12
 let offset = 0;
 
 /* Está função faz a conversão do JSON para uma parte específica do meu HTML, nesse caso a "li" do HTML da lista. */
