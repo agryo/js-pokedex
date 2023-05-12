@@ -6,6 +6,15 @@
     list-style: none;
 }
 
+.titulo {
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    color: snow;
+    background-color: dodgerblue;
+    border-radius: 1rem;
+}
+
 .normal {
     background-color: #a6a877;
 }
