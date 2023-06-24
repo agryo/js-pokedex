@@ -149,6 +149,7 @@
     padding: .30rem .5rem;
     margin: .30rem 0;
     font-size: 1.5rem;
+    cursor: pointer;
     color: #fff;
     background-color: #6c79db;
     border: none;
