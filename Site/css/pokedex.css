@@ -12,6 +12,7 @@
     text-align: center;
     color: snow;
     background-color: dodgerblue;
+    border: 1px solid black;
     border-radius: 1rem;
 }
 
@@ -93,6 +94,7 @@
     margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
+    border: 1px solid black;
 }
 
 .pokemon .number {
@@ -129,6 +131,7 @@
     border-radius: 1rem;
     filter: brightness(1.2);
     text-align: center;
+    border: 1px solid black;
 }
 
 .pokemon .detail img {
@@ -148,7 +151,7 @@
 .pagination button {
     padding: .30rem .5rem;
     margin: .30rem 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     color: #fff;
     background-color: #6c79db;
